@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Umovie.Converters"
+             xmlns:ffImageLoading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="Umovie.View.MovieCardView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <local:ImageMovieConverter x:Key="imageMovie"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <StackLayout Orientation="Vertical" HeightRequest="380"  Padding="0,0,0,10">
+
+        <AbsoluteLayout>
+          <!--  <Grid >-->
+                <ffImageLoading:CachedImage 
+                    Source="{Binding BackdropPath, Converter={StaticResource imageMovie}}"
+                CacheDuration="2" ErrorPlaceholder="noimage.png" LoadingPlaceholder="noimage.png"
+             DownsampleToViewSize="true" HeightRequest="250" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" />
+             
+            
+            <!--</Grid>-->
+            <StackLayout AbsoluteLayout.LayoutBounds="0,95,1,40" AbsoluteLayout.LayoutFlags="XProportional,WidthProportional" Padding="4" BackgroundColor="#B2FFFFFF">
+                <Label Text="{Binding Title}" FontSize="Micro" TextColor="Black" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="CenterAndExpand" />                
+            </StackLayout>
+        </AbsoluteLayout>
+        <StackLayout Padding="10, 3, 10, 3">
+
+            <Label  TextColor="White" Text="{Binding OverView}" FontSize="Small"  />
+           
+
+            <BoxView BackgroundColor="White" HeightRequest="1"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+               
+                <StackLayout Orientation="Horizontal" Grid.Column="0">
+                    <Label Text="Release Date:" FontSize="Micro" TextColor="White" VerticalOptions="CenterAndExpand" />
+
+                    <Label Text="{Binding ReleaseDate, StringFormat='{0:dd-MMM-yyyy}'}" FontSize="Micro" TextColor="White" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+
+                <Label Text="Details ->" TextColor="White" Grid.Column="1" FontSize="Micro" HorizontalOptions="End" VerticalOptions="CenterAndExpand" />
+
+            </Grid>
+                <!--<BoxView BackgroundColor="Silver" HeightRequest="1"/>-->
+        </StackLayout>
+    </StackLayout>
+        
+</ContentView>

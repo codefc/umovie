@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="3.6.0.220655" />
+    <PackageReference Include="Refit" Version="4.6.99" />
+    <PackageReference Include="MVVMCoffee" Version="1.0.0" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.5.870-pre" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.5.870-pre" />
+    <PackageReference Include="Xamarin.Forms.Extended.InfiniteScrolling" Version="1.0.0-preview2" />
+    <PackageReference Include="Xamarin.Forms.Theme.Base" Version="1.0.0.43-pre1" />
+    <PackageReference Include="Xamarin.Forms.Theme.Dark" Version="1.0.0.43-pre1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Model\Application\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Handlers\" />
+    <Folder Include="Services\External\" />
+    <Folder Include="Services\External\Contract\" />
+    <Folder Include="Services\Contract\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="View\" />
+    <Folder Include="Converters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Services\External\IMoviesClientcs" />
+  </ItemGroup>
+</Project>

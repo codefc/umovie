@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:view="clr-namespace:Umovie.View;assemlby=Umovie"
+             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             xmlns:local="clr-namespace:Umovie" x:Class="Umovie.MainPage" Visual="Material"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             Title="{Binding Title}" ios:Page.UseSafeArea="true" >
+    
+    
+    <ListView Visual="Material" ItemsSource="{Binding Movies}" HasUnevenRows="true"
+               CachingStrategy="RecycleElement">
+        <ListView.Behaviors>
+                <extended:InfiniteScrollBehavior IsLoadingMore="{Binding Ocupado}" />
+        </ListView.Behaviors>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <view:MovieCardView />
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        
+       
+        
+        <ListView.Footer>
+                <Grid Padding="6" IsVisible="{Binding Ocupado}">
+                    <Grid.Triggers>
+                        <Trigger TargetType="Grid" Property="IsVisible" Value="False">
+                            <Setter Property="HeightRequest" Value="0" />
+                        </Trigger>
+                    </Grid.Triggers>
+                    <ActivityIndicator IsRunning="{Binding Ocupado}" IsVisible="{Binding Ocupado}" 
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="Center"/>
+                </Grid>
+</ListView.Footer>
+    </ListView>
+</ContentPage>
