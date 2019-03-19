@@ -31,7 +31,7 @@ The study Xamarin Project
 
 The basic architecture has the following structure:
 
-![Basic Architecture](images/umovie.png)
+![Basic Architecture](images/UMovie.png)
 
 The screens are called Page and have a dependency of a ViewModel (name of the page with the suffix ViewModel). ViewModel communicates with services, which is responsible for orchestrating any needs beyond ViewModel's responsibility. However, Service classes abstract access to "Client" classes, which has the role of communicating with external services using the Refit package.
 
